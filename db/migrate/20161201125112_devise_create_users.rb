@@ -33,6 +33,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       ## User configuration - personal profile
       t.string :fullname, null: false
       t.string :address, null: true
+      t.references :role, null: true, index: true, foreign_key: true
+      t.references :root_directory, null: true, index: true, foreign_key: true
+
+      # Tokens - Google or Facebook API token
+      t.string :authentication_token
 
       t.timestamps null: false
     end
