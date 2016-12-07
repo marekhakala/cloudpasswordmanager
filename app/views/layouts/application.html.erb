@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CloudPasswordManager</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="CloudPasswordManager is your personal password manager.">
+    <title><%= full_title(yield(:title)) %></title>
+    <% if user_signed_in? %>
+      <%= stylesheet_link_tag 'application_private', media: 'all' %>
+    <% else %>
+      <%= stylesheet_link_tag 'application_public', media: 'all' %>
+    <% end %>
+    <%= javascript_include_tag resolve_js_include %>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
-
-  <body>
-    <%= yield %>
-  </body>
+  <% if user_signed_in? %>
+    <%= render 'layouts/application_private' %>
+  <% else %>
+    <%= render 'layouts/application_public' %>
+  <% end %>
 </html>
