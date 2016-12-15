@@ -3,3 +3,38 @@
 @import "font-awesome";
 @import "adminlte/dist/css/AdminLTE";
 @import "adminlte/dist/css/skins/skin-blue";
+
+.btn-sidebar-theme {
+  color: #FFFFFF;
+  background: #34495e;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn-sidebar {
+  text-align: left;
+  border: 0px solid transparent;
+}
+
+.nav-username {
+  color: #FFFFFF;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.block-hidden {
+	display: none;
+}
+
+.indent {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.indent_leaf {
+  margin-left: 5px;
+  margin-right: 5px;
+}
