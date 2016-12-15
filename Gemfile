@@ -46,11 +46,10 @@ gem 'omniauth-google-oauth2', '>= 0.5.0'
 gem 'js-routes', '>= 1.3.3'
 gem 'zeroclipboard-rails', '>= 0.1.1'
 
+gem 'lato-rails', '>= 1.0.3'
 gem 'figaro', '>= 1.1.1'
 gem 'doorkeeper', '>= 4.2.6'
-
 gem 'active_model_serializers', '0.10.6'
-
 gem 'stroke-seven-rails', '1.2.3'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
