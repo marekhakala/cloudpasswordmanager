@@ -1,0 +1,45 @@
+<section class="col-md-3">
+  <div class="box box-info">
+    <div class="box-header">
+      <h3 class="box-title">
+        <i class="fa fa-folder-open"></i> Directories
+      </h3>
+    </div>
+    <div class="box-body">
+      <a id="directory_list_refresh" class="btn btn-info btn-xs btn-block">
+        <i class="fa fa-refresh"></i> Refresh
+      </a>
+      <hr />
+      <div id="directory_list_content"></div>
+      <div id="directory_list_context_menu">
+        <ul class="dropdown-menu" role="menu">
+          <li><a tabindex="-1" data-action-name="new_directory"><i class="fa fa-folder"></i> New directory</a></li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" data-action-name="edit_directory"><i class="fa fa-pencil-square-o"></i> Edit directory</a></li>
+          <li><a tabindex="-1" data-action-name="delete_directory"><i class="fa fa-times"></i> Delete directory</a></li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        <button id="directory_list_button_new_directory" type="button" class="btn btn-default btn-block">
+          <i class="fa fa-folder"></i> New directory
+        </button>
+        <button id="directory_list_button_new_password_entry" type="button" class="btn btn-default btn-block">
+          <i class="fa fa-lock"></i> New password entry
+        </button>
+        <button data-toggle="collapse" data-target="#current_directory" class="btn btn-default btn-block">
+          <i class="fa fa-cog"></i> Current directory actions
+        </button>
+        <div id="current_directory" class="collapse">
+          <br />
+          <button id="directory_list_button_edit_directory" type="button" class="btn btn-default btn-block">
+            <i class="fa fa-pencil-square-o"></i> Edit directory
+          </button>
+          <button id="directory_list_button_delete_directory" type="button" class="btn btn-default btn-block">
+            <i class="fa fa-times"></i> Delete directory
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
