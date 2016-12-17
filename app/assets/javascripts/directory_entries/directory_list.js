@@ -42,12 +42,48 @@ function reloadDirectoryTreeFunctions() {
 				url_options['edit_directory'] = { url: Routes.api_v1_directory_entry_path(directory_id) };
 				url_options['delete_directory'] = { url: Routes.api_v1_directory_entry_path(directory_id) };
 
-				if (action_name == 'new_directory') {
+        if (action_name == 'new_directory') {
+					loadDirectoryNew(directory_id);
 				} else if (action_name == 'edit_directory' && directory_parent_id !== "null") {
+					loadDirectoryEdit(directory_id);
 				} else if (action_name == 'delete_directory' && directory_parent_id !== "null") {
+					loadDirectoryDelete(directory_id, directory_label);
 				}
 			}
 		});
+
+    // Directory list - New directory
+		$('#directory_list_button_new_directory').click(function() {
+			var directory_id = $('#directory_list_path').attr('data-current-directory-id');
+			loadDirectoryNew(directory_id);
+		});
+
+		// Directory list - Edit directory
+		$('#directory_list_button_edit_directory').click(function() {
+			var directory_id = $('#directory_list_path').attr('data-current-directory-id');
+			var parent_directory_id = $('#directory_list_path').attr('data-parent-directory-id');
+
+			if(parent_directory_id != null) {
+				loadDirectoryEdit(directory_id);
+			}
+		});
+
+		// Directory list - Delete directory
+		$('#directory_list_button_delete_directory').click(function() {
+			var directory_id = $('#directory_list_path').attr('data-current-directory-id');
+			var parent_directory_id = $('#directory_list_path').attr('data-parent-directory-id');
+
+			if(parent_directory_id != null) {
+				var json_url = Routes.info_api_v1_directory_entry_path(directory_id);
+
+				$.getJSON(json_url, function(data) {
+					if(elementHasProperty('status', data) && data['status'] !== "failed") {
+						var directory_label = data['directory_entry']['label'];
+						loadDirectoryDelete(directory_id, directory_label);
+					}
+				});
+			}
+		});    
 	});
 }
 
