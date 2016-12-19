@@ -42,7 +42,7 @@ function reloadDirectoryTreeFunctions() {
 				url_options['edit_directory'] = { url: Routes.api_v1_directory_entry_path(directory_id) };
 				url_options['delete_directory'] = { url: Routes.api_v1_directory_entry_path(directory_id) };
 
-        if (action_name == 'new_directory') {
+				if (action_name == 'new_directory') {
 					loadDirectoryNew(directory_id);
 				} else if (action_name == 'edit_directory' && directory_parent_id !== "null") {
 					loadDirectoryEdit(directory_id);
@@ -52,10 +52,16 @@ function reloadDirectoryTreeFunctions() {
 			}
 		});
 
-    // Directory list - New directory
+		// Directory list - New directory
 		$('#directory_list_button_new_directory').click(function() {
 			var directory_id = $('#directory_list_path').attr('data-current-directory-id');
 			loadDirectoryNew(directory_id);
+		});
+
+		// Directory list - New password entry
+		$('#directory_list_button_new_password_entry').click(function() {
+			var directory_id = $('#directory_list_path').attr('data-current-directory-id');
+			loadPasswordNew(directory_id);
 		});
 
 		// Directory list - Edit directory
@@ -83,7 +89,7 @@ function reloadDirectoryTreeFunctions() {
 					}
 				});
 			}
-		});    
+		});
 	});
 }
 
@@ -122,6 +128,7 @@ function fillDirectoryTreeItemInfo(tree_level, current_path, data, inner_html, c
 	}
 
 	var url = "<a class=\"btn btn-info btn-xs btn-dir-list-item\" data-directory-id=\"" + data['id'] + "\">" + data['label'] + "</a>";
+
 	html += "&nbsp;<i class=\"fa fa-folder-o\"></i> " + url + " <small>(" + data['number_passwords'] + ")</small>";
 	html += "</label>";
 	html += inner_html;
@@ -167,6 +174,8 @@ function loadDirectoryListInner(url) {
 		 content_panel.html(fillDirectoryTree(0, data['current_directory_path'], directory_entries, current_directory_id));
 		 content_panel.removeClass('content_loading');
 		 reloadDirectoryTreeFunctions();
+
+		 loadPasswordList(data['current_directory_id']);
 	});
 }
 

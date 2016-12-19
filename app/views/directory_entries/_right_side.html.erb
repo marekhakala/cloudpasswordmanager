@@ -1,6 +1,10 @@
 <section class="col-md-9">
   <div class="box box-info">
     <div class="box-body">
+      <%= render "directory_entries/modals/password_show" %>
+      <%= render "directory_entries/modals/password_form" %>
+      <%= render "directory_entries/modals/password_delete" %>
+
       <div id="password_list_section">
         <table id="password_list_items" class="table table-hover">
           <thead>
@@ -17,6 +21,7 @@
           <tbody>
           </tbody>
         </table>
+        <div id="password_list_info"></div>
       </div>
     </div>
   </div>
