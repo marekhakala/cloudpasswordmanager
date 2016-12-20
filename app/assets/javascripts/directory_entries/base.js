@@ -1,3 +1,6 @@
+// Directory list - Counter of selected items
+var number_selected_items = 0;
+
 function createDirectoryPath(data) {
 	var html = "";
 
@@ -54,6 +57,8 @@ function setCurrentUrlHashFromParams(params) {
 
 function refreshUi() {
 	loadFromUrlHash();
+	number_selected_items = 0;
+	updateControlPanel();
 }
 
 function setCurrentDirectory(id) {
@@ -68,6 +73,20 @@ function reloadDirectoryListFunctions() {
 			getDirectoryList(null, null, directory_id);
 		});
 	});
+}
+
+// Password list - Selection of items
+function updateControlPanel() {
+	var panel = $('#password_list_panel');
+
+	if(number_selected_items > 0) {
+		if(panel.hasClass('block-hidden'))
+			panel.removeClass('block-hidden');
+	} else {
+		if(!panel.hasClass('block-hidden'))
+			panel.addClass('block-hidden');
+	}
+	$('#password_list_selected_items').text(number_selected_items);
 }
 
 function getListSelectedItems() {
@@ -111,6 +130,92 @@ function elementHasProperty(property, object) {
 }
 
 $(document).ready(function() {
+	// Directory list - Table - Select all items
+	$('#checkbox_all').click(function() {
+		var list_keys = $('#password_list_items');
+
+		var list_unselected_items = list_keys.find('.item-key-checkbox.block-hidden');
+		var list_key_items = list_keys.find('.item-key-id');
+
+		var unselect_all = true;
+
+		if(list_unselected_items.size() == list_key_items.size())
+			unselect_all = false;
+
+		$.each(list_key_items, function(index, value) {
+			var parent_object = $(this).parent();
+			var tr_object = parent_object.parent().parent();
+
+			if(unselect_all) {
+				if(!parent_object.hasClass('block-hidden'))
+					parent_object.addClass('block-hidden');
+
+				if(tr_object.hasClass('tableview-active-item'))
+					tr_object.removeClass('tableview-active-item');
+
+				number_selected_items = 0;
+			} else {
+				if(parent_object.hasClass('block-hidden'))
+					parent_object.removeClass('block-hidden');
+
+				if(!tr_object.hasClass('tableview-active-item'))
+					tr_object.addClass('tableview-active-item');
+
+				number_selected_items = list_key_items.size();
+			}
+			updateControlPanel();
+		});
+	});
+
+	// Directory list - Table - Copy to
+	$('#directory-list-modal-copy-to-button').click(function() {
+		var directory_id = $('#directory_list_path').attr('data-current-directory-id');
+		var ids = getListSelectedItems();
+
+		apiPasswordSelectedLabels(directory_id, ids, function(data) {
+			loadPasswordCopyTo(directory_id, data['check_password_labels']);
+		});
+	});
+
+	// Directory list - Table - Move to
+	$('#directory-list-modal-move-to-button').click(function() {
+		var directory_id = $('#directory_list_path').attr('data-current-directory-id');
+		var ids = getListSelectedItems();
+
+		apiPasswordSelectedLabels(directory_id, ids, function(data) {
+			loadPasswordMoveTo(directory_id, data['check_password_labels']);
+		});
+	});
+
+	// Directory list - Table - Delete all
+	$('#directory-list-modal-delete-button').click(function() {
+		var directory_id = $('#directory_list_path').attr('data-current-directory-id');
+		var ids = getListSelectedItems();
+
+		apiPasswordDeleteAllNames(directory_id, ids, function(data) {
+			loadPasswordDeleteAll(directory_id, data['password_entries_infos']);
+		});
+	});
+
+	// Password entry - new / edit view component - spinner
+	var default_value = parseInt($('.spinner input').default_value, 10);
+
+	$('.spinner .btn:first-of-type').click(function() {
+		if(parseInt($('.spinner input').val(), 10) > 1) {
+			$('.spinner input').val(parseInt($('.spinner input').val(), 10) + 1);
+		} else {
+			$('.spinner input').val(default_value);
+		}
+	});
+
+	$('.spinner .btn:last-of-type').click(function() {
+		if(parseInt($('.spinner input').val(), 10) > 1) {
+			$('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
+		} else {
+			$('.spinner input').val(default_value);
+		}
+	});
+
 	// Directory list - refresh function
 	$('#directory_list_refresh').click(function() {
 		refreshUi();

@@ -1,9 +1,33 @@
 <section class="col-md-9">
   <div class="box box-info">
     <div class="box-body">
+      <div id="password_list_panel" class="block-hidden">
+        <div class="panel panel-footer clearfix">
+          <div class="pull-left section-list-panel-content">
+            <span id="password_list_selected_items">0</span> selected items from
+          </div>
+          <div class="pull-right">
+            <button id="directory-list-modal-copy-to-button" class="btn btn-info btn-sm">
+              <i class="fa fa-copy"></i> Copy to
+            </button>
+
+            <button id="directory-list-modal-move-to-button" class="btn btn-info btn-sm">
+              <i class="fa fa-folder-open-o"></i> Move to
+            </button>
+
+            <button id="directory-list-modal-delete-button" class="btn btn-info btn-sm">
+              <i class="fa fa-times"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+
       <%= render "directory_entries/modals/password_show" %>
       <%= render "directory_entries/modals/password_form" %>
       <%= render "directory_entries/modals/password_delete" %>
+
+      <%= render "directory_entries/modals/password_copy_to_move_to" %>
+      <%= render "directory_entries/modals/password_delete_all" %>
 
       <div id="password_list_section">
         <table id="password_list_items" class="table table-hover">
