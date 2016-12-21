@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "static_pages#home"
+  match "api_info" => "static_pages#api_info", via: :get
 
   namespace :api do
     namespace :v1 do

@@ -1,0 +1,680 @@
+<% provide(:title, "API info") %>
+<section class="content-header">
+  <h1 class="text-center"> CloudPasswordManager API V1</h1>
+  <h3 class="text-center"><i class="fa fa-gears"></i> <i>Endpoints</i></h3>
+</section>
+<section class="content">
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-user-o"></i> OAuth</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">POST</span> /oauth/token</div>
+                <div class="panel-body">
+                  Get a OAuth token<br />
+                  <b>Return type:</b> <a href="#oauth_token_entity">OAuthToken Entity</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-user"></i> User</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/user</div>
+                <div class="panel-body">
+                  User info<br />
+                  <b>Return type:</b> <a href="#user_result_entity">UserResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">PUT / PATCH</span> /api/v1/user/update</div>
+                <div class="panel-body">
+                  User info update<br />
+                  <b>Return type:</b> <a href="#user_result_entity">UserResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/user/directories</div>
+                <div class="panel-body">
+                  The list of user directories<br />
+                  <b>Return type:</b> <a href="#user_directories_entity">User directories Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-folder"></i> Directories</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/directories</div>
+                <div class="panel-body">
+                  The list of directories<br />
+                  <b>Return type:</b> <a href="#directory_result_entity">DirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories</div>
+                <div class="panel-body">
+                  Create a new directory<br />
+                  <b>Return type:</b> <a href="#directory_result_entity">DirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/directories/<i>:id</i></div>
+                <div class="panel-body">
+                  Directory info<br />
+                  <b>Return type:</b> <a href="#directory_result_entity">DirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">PATCH / PUT</span> /api/v1/directories/<i>:id</i></div>
+                <div class="panel-body">
+                  Directory info update<br />
+                  <b>Return type:</b> <a href="#directory_result_entity">DirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/directories/<i>:id</i>/info</div>
+                <div class="panel-body">
+                  Directory short info<br />
+                  <b>Return type:</b> <a href="#info_directory_result_entity">InfoDirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/directories/<i>:id</i>/check_directory_label</div>
+                <div class="panel-body">
+                  Check the directory label uniqueness<br />
+                  <b>Return type:</b> <a href="#check_directory_label_result_entity">CheckDirectoryLabelResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/directories/<i>:id</i>/check_password_label</div>
+                <div class="panel-body">
+                  Check the password label uniqueness<br />
+                  <b>Return type:</b> <a href="#check_password_label_result_entity">CheckPasswordLabelResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/directories/<i>:id</i>/check_password_labels</div>
+                <div class="panel-body">
+                  Check that labels are unique<br />
+                  <b>Return type:</b> <a href="#check_password_labels_result_entity">CheckPasswordLabelsResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:id</i>/copy_to</div>
+                <div class="panel-body">
+                  Copy passwords from a directory to another directory<br />
+                  <b>Return type:</b> <a href="#directory_multi_operations_results_entity">DirectoryMultiOperationsResults Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:id</i>/move_to</div>
+                <div class="panel-body">
+                  Move passwords from a directory to another directory<br />
+                  <b>Return type:</b> <a href="#directory_multi_operations_results_entity">DirectoryMultiOperationsResults Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:id</i>/delete_all</div>
+                <div class="panel-body">
+                  Delete selected passwords<br />
+                  <b>Return type:</b> <a href="#directory_multi_operations_results_entity">DirectoryMultiOperationsResults Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-danger">
+                <div class="panel-heading"><span class="badge">DELETE</span> /api/v1/directories/<i>:id</i></div>
+                <div class="panel-body">
+                  Delete a directory<br />
+                  <b>Return type:</b> <a href="#directory_delete_result_entity">DirectoryDeleteResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-lock"></i> Passwords</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/randompassword</div>
+                <div class="panel-body">
+                  Generate a random password<br />
+                  <b>Return type:</b> <a href="#random_password_entity">RandomPassword Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords</div>
+                <div class="panel-body">
+                  The list of passwords<br />
+                  <b>Return type:</b> <a href="#password_result_entity">PasswordResult Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords</div>
+                <div class="panel-body">
+                  Create a password entry<br />
+                  <b>Return type:</b> <a href="#password_result_entity">PasswordResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><span class="badge">GET</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords/<i>:id</i></div>
+                <div class="panel-body">
+                  Password entry info<br />
+                  <b>Return type:</b> <a href="#password_item_result_entity">PasswordItemResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">PATCH / PUT</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords/<i>:id</i></div>
+                <div class="panel-body">
+                  Password entry update<br />
+                  <b>Return type:</b> <a href="#password_item_result_entity">PasswordItemResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-danger">
+                <div class="panel-heading"><span class="badge">DELETE</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords/<i>:id</i></div>
+                <div class="panel-body">
+                  Delete a password entry<br />
+                  <b>Return type:</b> <a href="#password_item_result_entity">PasswordItemResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div class="panel panel-success">
+                <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords/infos</div>
+                <div class="panel-body">
+                  Password entry info<br />
+                  <b>Return type:</b> <a href="#password_entries_infos_result_entity">PasswordEntriesInfosResult Entity</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <h3 class="text-center"><i class="fa fa-database"></i> <i>Data</i></h3>
+  </div>
+
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-user"></i> User</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div id="user_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>UserResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>user</b> (<a href="#user_entity">User</a> entity)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="user_entity" class="panel panel-default">
+                <div class="panel-heading"><b>User</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>fullname</b> (string)</li>
+                    <li><b>email</b> (string)</li>
+                    <li><b>address</b> (string)</li>
+                    <li><b>role</b> (<a href="#role_entity">Role</a> entity)</li>
+                    <li><b>current_sign_in_at</b> (string)</li>
+                    <li><b>current_sign_in_ip</b> (string)</li>
+                    <li><b>last_sign_in_at</b> (string)</li>
+                    <li><b>last_sign_in_ip</b> (string)</li>
+                    <li><b>created_at</b> (string)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="role_entity" class="panel panel-default">
+                <div class="panel-heading"><b>Role</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>code</b> (string)</li>
+                    <li><b>label</b> (string)</li>
+                    <li><b>description</b> (string)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="user_directories_entity" class="panel panel-default">
+                <div class="panel-heading"><b>UserDirectories</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>directories</b> (Array of <a href="#directory_entity">Directory</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="directory_entity" class="panel panel-default">
+                <div class="panel-heading"><b>Directory</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>label</b> (string)</li>
+                    <li><b>directory_path</b> (string)</li>
+                    <li><b>number_directories</b> (integer)</li>
+                    <li><b>number_passwords</b> (integer)</li>
+                    <li><b>parent_directory_id</b> (integer)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-folder"></i> Directories</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div id="directory_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>DirectoryResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>parent_directory_id</b> (integer)</li>
+                    <li><b>current_directory_id</b> (integer)</li>
+                    <li><b>current_directory_path</b> (Array of <a href="#current_directory_path_entity">CurrentDirectoryPath</a> Model)</li>
+                    <li><b>number_passwords</b> (integer)</li>
+                    <li><b>directory_entries</b> (Array of <a href="#full_directory_wrapper_entity">FullDirectoryWrapper</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="current_directory_path_entity" class="panel panel-default">
+                <div class="panel-heading"><b>CurrentDirectoryPath</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>label</b> (string)</li>
+                    <li><b>parent_directory_id</b> (integer)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="full_directory_wrapper_entity" class="panel panel-default">
+                <div class="panel-heading"><b>FullDirectoryWrapper</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>directory_entry</b> (<a href="#full_directory_entity">FullDirectory</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="full_directory_entity" class="panel panel-default">
+                <div class="panel-heading"><b>FullDirectory</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>label</b> (string)</li>
+                    <li><b>number_directories</b> (integer)</li>
+                    <li><b>number_passwords</b> (integer)</li>
+                    <li><b>parent_directory_id</b> (integer)</li>
+                    <li><b>description</b> (string)</li>
+                    <li><b>directories</b> (Array of <a href="#full_directory_wrapper_entity">FullDirectoryWrapper</a> Model)</li>
+                    <li><b>created_at</b> (string)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="info_directory_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>InfoDirectoryResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>directory_entry</b> (<a href="#info_directory_entity">InfoDirectory</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="info_directory_entity" class="panel panel-default">
+                <div class="panel-heading"><b>InfoDirectory</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>label</b> (string)</li>
+                    <li><b>description</b> (string)</li>
+                    <li><b>number_directories</b> (integer)</li>
+                    <li><b>number_passwords</b> (integer)</li>
+                    <li><b>parent_directory_id</b> (integer)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="check_directory_label_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>CheckDirectoryLabelResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>check_directory_label</b> (<a href="#check_directory_label_entity">CheckDirectoryLabel</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="check_directory_label_entity" class="panel panel-default">
+                <div class="panel-heading"><b>CheckPasswordLabel</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>directory_label</b> (string)</li>
+                    <li><b>unique</b> (boolean)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="check_password_label_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>CheckPasswordLabelResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>check_password_label</b> (<a href="#check_password_label_entity">CheckPasswordLabel</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="check_password_label_entity" class="panel panel-default">
+                <div class="panel-heading"><b>CheckPasswordLabel</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>password_label</b> (string)</li>
+                    <li><b>unique</b> (boolean)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="check_password_labels_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>CheckPasswordLabelsResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>check_password_labels</b> (<a href="#check_password_labels_entity">CheckPasswordLabels</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="check_password_labels_entity" class="panel panel-default">
+                <div class="panel-heading"><b>CheckPasswordLabels</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>unique</b> (boolean)</li>
+                    <li><b>label</b> (string)</li>
+                    <li><b>description</b> (string)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="directory_multi_operations_results_entity" class="panel panel-default">
+                <div class="panel-heading"><b>DirectoryMultiOperationsResults</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>results</b> (Array of <a href="#directory_multi_operations_entity">DirectoryMultiOperations</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="directory_multi_operations_entity" class="panel panel-default">
+                <div class="panel-heading"><b>DirectoryMultiOperations</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>status</b> (string)</li>
+                    <li><b>error</b> (string)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="directory_delete_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>DirectoryDeleteResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-lock"></i> Passwords</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div id="random_password_entity" class="panel panel-default">
+                <div class="panel-heading"><b>RandomPassword</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>password</b> (string)</li>
+                    <li><b>password_length</b> (integer)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="password_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>PasswordResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>total_entries</b> (integer)</li>
+                    <li><b>password_entries</b> (Array of <a href="#password_entity">Password Entity</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="password_entity" class="panel panel-default">
+                <div class="panel-heading"><b>Password</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>directory_id</b> (integer)</li>
+                    <li><b>label</b> (string)</li>
+                    <li><b>description</b> (string)</li>
+                    <li><b>password</b> (string)</li>
+                    <li><b>account</b> (string)</li>
+                    <li><b>email</b> (string)</li>
+                    <li><b>url</b> (string)</li>
+                    <li><b>created_at</b> (string)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="password_item_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>PasswordItemResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>result</b> (Array of <a href="#password_entity">Password Entity</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="password_entries_infos_result_entity" class="panel panel-default">
+                <div class="panel-heading"><b>PasswordEntriesInfosResult</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>password_entries_infos</b> (Array of <a href="#password_entries_infos_entity">PasswordEntriesInfos Entity</a> Model)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="password_entries_infos_entity" class="panel panel-default">
+                <div class="panel-heading"><b>PasswordEntriesInfos</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>id</b> (integer)</li>
+                    <li><b>label</b> (string)</li>
+                    <li><b>description</b> (string)</li>
+                    <li><b>available</b> (boolean)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-bars"></i> Others</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div id="error_entity" class="panel panel-default">
+                <div class="panel-heading"><b>Error</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>status</b> (string)</li>
+                    <li><b>errors</b> (string)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="list-unstyled">
+              <div id="oauth_token_entity" class="panel panel-default">
+                <div class="panel-heading"><b>OAuthToken</b> Entity</div>
+                <div class="panel-body">
+                  <ul>
+                    <li><b>access_token</b> (string)</li>
+                    <li><b>token_type</b> (string)</li>
+                    <li><b>expires_in</b> (long)</li>
+                    <li><b>refresh_token</b> (string)</li>
+                    <li><b>scope</b> (string)</li>
+                    <li><b>created_at</b> (long)</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

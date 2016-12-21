@@ -40,6 +40,11 @@
               <i class="fa fa-user"></i> <span>Profile</span>
             <% end %>
           </li>
+          <%= active_list_item is_controller_action?("static_pages", "api_info") %>
+            <%= link_to api_info_path do %>
+              <i class="fa fa-gears"></i> <span>API info</span>
+            <% end %>
+          </li>
         </ul>
       </section>
     </aside>
