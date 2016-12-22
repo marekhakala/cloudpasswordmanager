@@ -1,0 +1,37 @@
+<table id="users_list" class="table table-hover">
+  <thead>
+    <tr>
+      <th class="center">#</th>
+      <th class="center">E-mail/Account</th>
+      <th class="center">Role</th>
+      <th class="center">Actions</th>
+    </tr>
+  </thead>
+  <% unless not @users.nil? and @users.empty? %>
+      <% @users.each do |user_entry| %>
+        <tr>
+          <td><%= user_entry.id %></td>
+          <td><%= mail_to user_entry.email %></td>
+          <td><%= resolve_user_role_label(user_entry.role).html_safe %></td>
+          <td>
+            <%= link_to portal_user_path(user_entry), class: "btn btn-xs btn-default", title: "View" do %>
+              <i class="fa fa-eye"></i>
+            <% end %>
+            <%= link_to edit_portal_user_path(user_entry), class: "btn btn-xs btn-default", title: "Edit" do %>
+              <i class="fa fa-pencil-square-o"></i>
+            <% end %>
+            <%= link_to  portal_user_path(user_entry), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-default", title: "Delete" do %>
+              <i class="fa fa-times"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <tbody>
+      </tbody>
+    </table>
+  <% else %>
+      <tbody>
+      </tbody>
+    </table>
+    <h4 class="text-center">The list of users is empty.</h4>
+  <% end %>

@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  resources :portal_users, path: "pusers"
   use_doorkeeper
 end

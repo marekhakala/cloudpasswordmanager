@@ -1,0 +1,28 @@
+<% provide(:title, "Users - New user") %>
+
+<section class="content-header">
+  <h1><i class="fa fa-user"></i> New user</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-body">
+          <%= render 'form', user_entry_button_title: 'Create', user_entry_object: @user_entry, user_entry_url: portal_users_path, user_entry_action_edit: false %>
+        </div>
+      </div>
+      <div id="users_new_panel">
+        <div class="panel panel-footer clearfix">
+          <div class="pull-left section-list-panel-content">
+            <%= link_to portal_users_path, class: "btn btn-info btn-sm", title: "Back" do %>
+              <i class="fa fa-chevron-left"></i> Back
+            <% end %>
+          </div>
+          <div class="pull-right">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

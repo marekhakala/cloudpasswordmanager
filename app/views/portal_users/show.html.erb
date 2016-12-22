@@ -1,0 +1,57 @@
+<% provide(:title, "Users - #{@user_entry.fullname}") %>
+
+<section class="content-header">
+  <h1><i class="fa fa-users"></i> Users</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <h4><i class="fa fa-user"></i> <%= @user_entry.fullname %></h4>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-sm-3"><label>Full name</label></div>
+            <div class="col-sm-9"><%= @user_entry.fullname %></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3"><label>E-mail</label></div>
+            <div class="col-sm-9"><%= mail_to @user_entry.email %></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3"><label>Address</label></div>
+            <div class="col-sm-9"><%= @user_entry.address %></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3"><label>Role</label></div>
+            <div class="col-sm-9">
+              <% if not @user_entry.nil? and not @user_entry.role.nil? %>
+                <%= resolve_user_role(@user_entry.role).html_safe %>
+                <%= @user_entry.role.label %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="users_show_panel">
+        <div class="panel panel-footer clearfix">
+          <div class="pull-left section-list-panel-content">
+            <%= link_to portal_users_path, class: "btn btn-sm btn-info", title: "Back" do %>
+              <i class="fa fa-chevron-left"></i> Back
+            <% end %>
+            <%= link_to edit_portal_user_path, class: "btn btn-sm btn-info", title: "Edit" do %>
+              <i class="fa fa-pencil-square-o"></i> Edit
+            <% end %>
+            <%= link_to portal_user_path(@user_entry), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger", title: "Delete" do %>
+              <i class="fa fa-times"></i> Delete
+            <% end %>
+          </div>
+          <div class="pull-right">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

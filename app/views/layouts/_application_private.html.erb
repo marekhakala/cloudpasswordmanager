@@ -40,6 +40,13 @@
               <i class="fa fa-user"></i> <span>Profile</span>
             <% end %>
           </li>
+          <% if is_users_list_access_granted? %>
+            <%= active_list_item is_controller?("portal_users") %>
+              <%= link_to portal_users_path do %>
+                <i class="fa fa-users"></i> <span>Users</span>
+              <% end %>
+            </li>
+          <% end %>
           <%= active_list_item is_controller_action?("static_pages", "api_info") %>
             <%= link_to api_info_path do %>
               <i class="fa fa-gears"></i> <span>API info</span>

@@ -1,0 +1,40 @@
+<%= form_for user_entry_object, url: user_entry_url do |f| %>
+  <div class="form-group text-left">
+    <% if user_entry_object.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(user_entry_object.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+        <% user_entry_object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <label>Full name</label>
+    <%= f.text_field :fullname, class: 'form-control', placeholder: 'Full name', autofocus: true %>
+  </div>
+  <div class="form-group">
+    <label>E-mail</label>
+    <%= f.text_field :email, class: 'form-control', placeholder: 'E-mail' %>
+  </div>
+  <div class="form-group">
+    <label>Address</label>
+    <%= f.text_field :address, class: 'form-control', placeholder: 'Address' %>
+  </div>
+  <div class="form-group">
+    <label>Role</label>
+    <%= f.select :role_id, resolve_roles, { prompt: "-- Choose role --" }, class: 'form-control' %>
+  </div>
+  <% if not user_entry_action_edit.nil? and not user_entry_action_edit %>
+    <div class="form-group">
+      <label>Password</label>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <%= f.text_field :password, id: 'password_form_password', class: 'form-control', placeholder: 'Password', autocomplete: "off" %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit user_entry_button_title, class: 'btn btn-block btn-info' %>
+  </div>
+<% end %>
