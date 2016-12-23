@@ -33,6 +33,13 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  resources :portal_users, path: "pusers"
+  resources :portal_users, path: "pusers" do
+    member do
+      get :change_password
+      patch :set_password
+      put :set_password
+    end
+  end
+  
   use_doorkeeper
 end

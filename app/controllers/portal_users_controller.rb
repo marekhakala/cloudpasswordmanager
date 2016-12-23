@@ -2,7 +2,7 @@ class PortalUsersController < ApplicationController
   include PortalUsersHelper
 
   before_action :set_user
-  before_action :set_user_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_entry, only: [:show, :edit, :update, :change_password, :set_password, :destroy]
 
   def index
     unless @user.role.nil?
@@ -72,6 +72,27 @@ class PortalUsersController < ApplicationController
       @user_entry.destroy
       respond_to do |format|
         format.html { redirect_to portal_users_path, notice: 'User was successfully destroyed.' }
+      end
+    end
+  end
+
+  def change_password
+  end
+
+  def set_password
+    c_params = user_params
+    permission_check = false
+    permission_check = can_manage_role_by_id? c_params[:role_id] unless c_params.nil?
+
+    unless permission_check
+      redirect_to portal_users_path, notice: 'You don\'t have enough privileges to perform this operation.'
+    else
+      respond_to do |format|
+        if @user_entry.update(c_params)
+          format.html { redirect_to portal_user_path(@user_entry), notice: 'User was successfully updated.' }
+        else
+          format.html { render :change_password }
+        end
       end
     end
   end

@@ -20,6 +20,9 @@
             <%= link_to edit_portal_user_path(user_entry), class: "btn btn-xs btn-default", title: "Edit" do %>
               <i class="fa fa-pencil-square-o"></i>
             <% end %>
+            <%= link_to change_password_portal_user_path(user_entry), class: "btn btn-xs btn-default", title: "Change password" do %>
+              <i class="fa fa-exchange"></i>
+            <% end %>
             <%= link_to  portal_user_path(user_entry), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-default", title: "Delete" do %>
               <i class="fa fa-times"></i>
             <% end %>
