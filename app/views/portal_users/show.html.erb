@@ -1,7 +1,7 @@
-<% provide(:title, "Users - #{@user_entry.fullname}") %>
+<% provide(:title, "#{t('portal_users.show_user_title')} - #{@user_entry.fullname}") %>
 
 <section class="content-header">
-  <h1><i class="fa fa-users"></i> Users</h1>
+  <h1><i class="fa fa-users"></i> <%= t('portal_users.show_user_subtitle') %></h1>
 </section>
 
 <section class="content">
@@ -13,19 +13,19 @@
         </div>
         <div class="box-body">
           <div class="row">
-            <div class="col-sm-3"><label>Full name</label></div>
+            <div class="col-sm-3"><label><%= t('portal_users.show_user_full_name_label') %></label></div>
             <div class="col-sm-9"><%= @user_entry.fullname %></div>
           </div>
           <div class="row">
-            <div class="col-sm-3"><label>E-mail</label></div>
+            <div class="col-sm-3"><label><%= t('portal_users.show_user_email_label') %></label></div>
             <div class="col-sm-9"><%= mail_to @user_entry.email %></div>
           </div>
           <div class="row">
-            <div class="col-sm-3"><label>Address</label></div>
+            <div class="col-sm-3"><label><%= t('portal_users.show_user_address_label') %></label></div>
             <div class="col-sm-9"><%= @user_entry.address %></div>
           </div>
           <div class="row">
-            <div class="col-sm-3"><label>Role</label></div>
+            <div class="col-sm-3"><label><%= t('portal_users.show_user_role_label') %></label></div>
             <div class="col-sm-9">
               <% if not @user_entry.nil? and not @user_entry.role.nil? %>
                 <%= resolve_user_role(@user_entry.role).html_safe %>
@@ -38,17 +38,17 @@
       <div id="users_show_panel">
         <div class="panel panel-footer clearfix">
           <div class="pull-left section-list-panel-content">
-            <%= link_to portal_users_path, class: "btn btn-sm btn-info", title: "Back" do %>
-              <i class="fa fa-chevron-left"></i> Back
+            <%= link_to portal_users_path, class: "btn btn-sm btn-info", title: t('back_title') do %>
+              <i class="fa fa-chevron-left"></i> <%= t('back_title') %>
             <% end %>
-            <%= link_to edit_portal_user_path, class: "btn btn-sm btn-info", title: "Edit" do %>
-              <i class="fa fa-pencil-square-o"></i> Edit
+            <%= link_to edit_portal_user_path, class: "btn btn-sm btn-info", title: t('edit_title') do %>
+              <i class="fa fa-pencil-square-o"></i> <%= t('edit_title') %>
             <% end %>
-            <%= link_to change_password_portal_user_path, class: "btn btn-sm btn-info", title: "Change password" do %>
-              <i class="fa fa-exchange"></i> Change password
+            <%= link_to change_password_portal_user_path, class: "btn btn-sm btn-info", title: t('change_password_title') do %>
+              <i class="fa fa-exchange"></i> <%= t('change_password_title') %>
             <% end %>
-            <%= link_to portal_user_path(@user_entry), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger", title: "Delete" do %>
-              <i class="fa fa-times"></i> Delete
+            <%= link_to portal_user_path(@user_entry), method: :delete, data: { confirm: t('confirm_are_you_sure_text') }, class: "btn btn-sm btn-danger", title: t('delete_title') do %>
+              <i class="fa fa-times"></i> <%= t('delete_title') %>
             <% end %>
           </div>
           <div class="pull-right">

@@ -1,4 +1,4 @@
-<% provide(:title, "Change your password") %>
+<% provide(:title, t('devise_reset_password.reset_password_title')) %>
 <%= render 'layouts/header_public' %>
 
 <div id="headerwrap">
@@ -7,7 +7,7 @@
       <div class="col-lg-12">
         <h3>
           <i class="fa fa-3x fa-info-circle"></i><br />
-          Change your password<br /><br />
+          <%= t('devise_reset_password.reset_password_subtitle') %><br /><br />
         </h3>
         <div class="col-lg-12 col-md-12 col-xs-12 form-area">
           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -17,15 +17,15 @@
             <%= f.hidden_field :reset_password_token %>
             <div class="form-group">
               <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+                <em>(<%= @minimum_password_length %> <%= t('minimum_password_characters') %>)</em><br />
               <% end %>
-              <%= f.password_field :password, class: 'form-control', placeholder: 'New password', autofocus: true, autocomplete: "off" %>
+              <%= f.password_field :password, class: 'form-control', placeholder: t('devise_reset_password.new_password_placeholder'), autofocus: true, autocomplete: "off" %>
             </div>
             <div class="form-group">
-              <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm new password', autocomplete: "off" %>
+              <%= f.password_field :password_confirmation, class: 'form-control', placeholder: t('devise_reset_password.confirm_new_password_placeholder'), autocomplete: "off" %>
             </div>
             <div class="actions">
-              <%= f.submit "Change my password", class: 'btn btn-block btn-theme' %>
+              <%= f.submit t('devise_reset_password.change_my_password_submit'), class: 'btn btn-block btn-theme' %>
             </div>
           <% end %>
         </div>

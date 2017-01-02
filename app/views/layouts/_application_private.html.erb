@@ -18,7 +18,7 @@
             </li>
             <li>
               <%= button_to destroy_user_session_path, class: "btn btn-info btn-block", style: "margin-top: 6px;", method: "delete" do %>
-                <i class="fa fa-sign-out"></i> Sign Out
+                <i class="fa fa-sign-out"></i> <%= t('sign_out_link') %>
               <% end %>
             </li>
             <li>&nbsp;&nbsp;</li>
@@ -29,27 +29,27 @@
     <aside class="main-sidebar">
       <section class="sidebar">
         <ul class="sidebar-menu">
-          <li class="header">MAIN MENU</li>
+          <li class="header"><%= t('private_main_menu.main_menu_label') %></li>
           <%= active_list_item is_controller_action?("static_pages", "home") %>
             <%= link_to root_path do %>
-              <i class="fa fa-lock"></i> <span>Passwords</span>
+              <i class="fa fa-lock"></i> <span><%= t('private_main_menu.passwords_label') %></span>
             <% end %>
           </li>
           <%= active_list_item is_controller_action?("devise/registrations", "edit") %>
             <%= link_to edit_user_registration_path do %>
-              <i class="fa fa-user"></i> <span>Profile</span>
+              <i class="fa fa-user"></i> <span><%= t('private_main_menu.profile_label') %></span>
             <% end %>
           </li>
           <% if is_users_list_access_granted? %>
             <%= active_list_item is_controller?("portal_users") %>
               <%= link_to portal_users_path do %>
-                <i class="fa fa-users"></i> <span>Users</span>
+                <i class="fa fa-users"></i> <span><%= t('private_main_menu.users_label') %></span>
               <% end %>
             </li>
           <% end %>
           <%= active_list_item is_controller_action?("static_pages", "api_info") %>
             <%= link_to api_info_path do %>
-              <i class="fa fa-gears"></i> <span>API info</span>
+              <i class="fa fa-gears"></i> <span><%= t('private_main_menu.api_info_label') %></span>
             <% end %>
           </li>
         </ul>

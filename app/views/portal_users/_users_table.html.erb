@@ -1,10 +1,10 @@
 <table id="users_list" class="table table-hover">
   <thead>
     <tr>
-      <th class="center">#</th>
-      <th class="center">E-mail/Account</th>
-      <th class="center">Role</th>
-      <th class="center">Actions</th>
+      <th class="center"><%= t('portal_users.users_list_column_title_id') %></th>
+      <th class="center"><%= t('portal_users.users_list_column_title_account') %></th>
+      <th class="center"><%= t('portal_users.users_list_column_title_role') %></th>
+      <th class="center"><%= t('portal_users.users_list_column_title_actions') %></th>
     </tr>
   </thead>
   <% unless not @users.nil? and @users.empty? %>
@@ -14,16 +14,16 @@
           <td><%= mail_to user_entry.email %></td>
           <td><%= resolve_user_role_label(user_entry.role).html_safe %></td>
           <td>
-            <%= link_to portal_user_path(user_entry), class: "btn btn-xs btn-default", title: "View" do %>
+            <%= link_to portal_user_path(user_entry), class: "btn btn-xs btn-default", title: t('view_title') do %>
               <i class="fa fa-eye"></i>
             <% end %>
-            <%= link_to edit_portal_user_path(user_entry), class: "btn btn-xs btn-default", title: "Edit" do %>
+            <%= link_to edit_portal_user_path(user_entry), class: "btn btn-xs btn-default", title: t('edit_title') do %>
               <i class="fa fa-pencil-square-o"></i>
             <% end %>
-            <%= link_to change_password_portal_user_path(user_entry), class: "btn btn-xs btn-default", title: "Change password" do %>
+            <%= link_to change_password_portal_user_path(user_entry), class: "btn btn-xs btn-default", title: t('change_password_title') do %>
               <i class="fa fa-exchange"></i>
             <% end %>
-            <%= link_to  portal_user_path(user_entry), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-default", title: "Delete" do %>
+            <%= link_to  portal_user_path(user_entry), method: :delete, data: { confirm: t('confirm_are_you_sure_text') }, class: "btn btn-xs btn-default", title: t('delete_title') do %>
               <i class="fa fa-times"></i>
             <% end %>
           </td>
@@ -36,5 +36,5 @@
       <tbody>
       </tbody>
     </table>
-    <h4 class="text-center">The list of users is empty.</h4>
+    <h4 class="text-center"><%= t('portal_users.users_list_is_empty') %></h4>
   <% end %>

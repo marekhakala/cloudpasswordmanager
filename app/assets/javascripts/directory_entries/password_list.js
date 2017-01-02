@@ -24,16 +24,16 @@ function fillPasswordRow(data, index) {
 	html += "<td class=\"center\">";
 	html += "<div class=\"btn-group\">";
 	html += "<span id=\"list_password_value_" + index + "\" class=\"block-hidden\">" + data['password'] + "</span>";
-	html += "<button class=\"btn btn-xs btn-default copy-item-action\" tittle=\"Copy password to clipboard\"";
+	html += "<button class=\"btn btn-xs btn-default copy-item-action\" tittle=\" " + I18n.t('copy_password_title') + "\"";
 	html += "data-clipboard-target=\"password_value\" data-clipboard-text=\"" + data['password'] + "\">";
 	html += "<i class=\"fa fa-clipboard\"></i></button>";
-	html += "<button class=\"btn btn-default btn-xs show-item-action\" data-directory-id=\"" + data['directory_id'] + "\" data-password-id=\"" + data['id'] + "\">";
+	html += "<button class=\"btn btn-default btn-xs show-item-action\" title=\"" + I18n.t('view_title') + "\" data-directory-id=\"" + data['directory_id'] + "\" data-password-id=\"" + data['id'] + "\">";
 	html += "<i class=\"fa fa-eye\"></i>";
 	html += "</button>";
-	html += "<button class=\"btn btn-default btn-xs edit-item-action\" data-directory-id=\"" + data['directory_id'] + "\" data-password-id=\"" + data['id'] + "\">";
+	html += "<button class=\"btn btn-default btn-xs edit-item-action\" title=\"" + I18n.t('edit_title') + "\" data-directory-id=\"" + data['directory_id'] + "\" data-password-id=\"" + data['id'] + "\">";
 	html += "<i class=\"fa fa-pencil-square-o\"></i>";
 	html += "</button>";
-	html += "<button class=\"btn btn-default btn-xs delete-item-action\" data-directory-id=\"" + data['directory_id'] + "\" data-password-id=\"" + data['id'] + "\"  data-password-label=\"" + data['label'] + "\">";
+	html += "<button class=\"btn btn-default btn-xs delete-item-action\" title=\"" + I18n.t('delete_title') + "\" data-directory-id=\"" + data['directory_id'] + "\" data-password-id=\"" + data['id'] + "\"  data-password-label=\"" + data['label'] + "\">";
 	html += "<i class=\"fa fa-times\"></i>";
 	html += "</button>";
 	html += "</div></td></tr>";
@@ -73,7 +73,7 @@ function loadPasswordList(id) {
 function showCreateCopyButton(button_id, button_title, button_copy_target, copy_value) {
 	var copy_button = "<button id=\"" + button_id + "\" class=\"btn btn-xs btn-default\" title=\"" + button_title + "\" ";
 	copy_button += "data-clipboard-target=\"" + button_copy_target + "\" data-clipboard-text=\"" + copy_value + "\">";
-	copy_button += "<i class=\"fa fa-clipboard\"></i> Copy</button>";
+	copy_button += "<i class=\"fa fa-clipboard\"></i> " + I18n.t('directory_entries.right_side.copy_label') + "</button>";
 
 	if(objectIsEmpty(copy_value))
 		return "";

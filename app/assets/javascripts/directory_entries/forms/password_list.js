@@ -25,20 +25,20 @@ function loadPasswordShow(directory_id, password_id) {
 		$('#password_show_description_value').html(password_entry_description);
 
 		$('#password_show_account_buttons')
-		.html(showCreateCopyButton("password_show_account_copy_button", "Copy account to clipboard", "account_value", password_entry_account));
+		.html(showCreateCopyButton("password_show_account_copy_button", I18n.t('copy_account_title'), "account_value", password_entry_account));
 		$('#password_show_account_value').html(password_entry_account);
 
 		$('#password_show_password_buttons')
-		.html(showCreateCopyButton("password_show_password_copy_button", "Copy password to clipboard", "password_value", password_entry_password));
+		.html(showCreateCopyButton("password_show_password_copy_button", I18n.t('copy_password_title'), "password_value", password_entry_password));
 		$('#password_show_password_value').html(createPasswordField(password_entry_password));
 		loadPasswordShowSetupShowHideButton($('#password_show_show_hide_button'));
 
 		$('#password_show_email_buttons')
-		.html(showCreateCopyButton("password_show_email_copy_button", "Copy e-mail to clipboard", "email_value", password_entry_email));
+		.html(showCreateCopyButton("password_show_email_copy_button", I18n.t('copy_email_title'), "email_value", password_entry_email));
 		$('#password_show_email_value').html(password_entry_email);
 
 		$('#password_show_url_buttons')
-		.html(showCreateCopyButton("password_show_url_copy_button", "Copy url to clipboard", "url_value", password_entry['url']));
+		.html(showCreateCopyButton("password_show_url_copy_button", I18n.t('copy_url_title'), "url_value", password_entry['url']));
 		$('#password_show_url_value').html(password_entry_url);
 
 		var passwordShowAccountCopyButtonZeroClipboard = new ZeroClipboard($("#password_show_account_copy_button"));
@@ -55,7 +55,7 @@ function createPasswordField(password_value) {
 	for(var i = 0; i < 10; i++)
 		password_value_asterisk += "*";
 
-	outputHtml = "<button id=\"password_show_show_hide_button\" class=\"btn btn-xs btn-default\" data-password-show-password-view-state=\"hide\"><i class=\"fa fa-eye\"></i> Show</button>";
+	outputHtml = "<button id=\"password_show_show_hide_button\" title=\"" + I18n.t('show_title') + " " + I18n.t('hide_title') + "\" class=\"btn btn-xs btn-default\" data-password-show-password-view-state=\"hide\"><i class=\"fa fa-eye\"></i> " + I18n.t('show_title') + "</button>";
 	outputHtml += "&nbsp;<span id=\"password_show_show_hide_password_value_asterisk\">" + password_value_asterisk + "</span>";
 	outputHtml += "<span id=\"password_show_show_hide_password_value_plain\" class=\"block-hidden\">" + password_value + "</span>";
 	return outputHtml;
@@ -77,7 +77,7 @@ function loadPasswordShowSetupShowHideButton(object) {
 			if(!spanValueAsterisk.hasClass('block-hidden'))
 				spanValueAsterisk.addClass('block-hidden');
 
-			outputHtml = "<i class=\"fa fa-eye\"></i> Hide";
+			outputHtml = "<i class=\"fa fa-eye\"></i> " + I18n.t('hide_title');
 			viewState = "show";
 		} else {
 			if(spanValueAsterisk.hasClass('block-hidden'))
@@ -86,7 +86,7 @@ function loadPasswordShowSetupShowHideButton(object) {
 			if(!spanValuePlain.hasClass('block-hidden'))
 				spanValuePlain.addClass('block-hidden');
 
-			outputHtml = "<i class=\"fa fa-eye\"></i> Show";
+			outputHtml = "<i class=\"fa fa-eye\"></i> " + I18n.t('show_title');
 			viewState = "hide";
 		}
 
@@ -98,7 +98,7 @@ function loadPasswordShowSetupShowHideButton(object) {
 function loadPasswordNew(directory_id) {
 	$('#password_form_alert_container').html("");
 	$('#password_form_data').attr("data-directory-id", directory_id);
-	$('#password_form_title').html("<i class=\"fa fa-lock\"></i> New password");
+	$('#password_form_title').html("<i class=\"fa fa-lock\"></i> " + I18n.t('directory_entries.right_side.password_list_new_password'));
 	$('#password_form_label').val("");
 	$('#password_form_description').val("");
 	$('#password_form_account').val("");
@@ -118,7 +118,7 @@ function loadPasswordNew(directory_id) {
 	});
 
 	var buttonSaveHtml = "<button id=\"password_from_button_save\" type=\"button\" class=\"btn btn-info\">";
-	buttonSaveHtml += "<i class=\"fa fa-floppy-o\"></i> Save</button>";
+	buttonSaveHtml += "<i class=\"fa fa-floppy-o\"></i> " + I18n.t('save_title') + "</button>";
 	$('#password_form_actions').html(buttonSaveHtml);
 	$('#password_from_button_save').click(function() {
 		 checkAndSavePasswordForm(directory_id, null, apiPasswordEntryNew);
@@ -161,7 +161,7 @@ function loadPasswordEdit(directory_id, password_id) {
 		$('#password_form_alert_container').html("");
 		$('#password_form_data').attr('data-directory-id', directory_id);
 		$('#password_form_data').attr('data-password-id', password_id);
-		$('#password_form_title').html("<i class=\"fa fa-lock\"></i> Edit password");
+		$('#password_form_title').html("<i class=\"fa fa-lock\"></i> " + I18n.t('directory_entries.modal_windows.password_form_edit_title'));
 		$('#password_form_label').val(password_entry_label);
 		$('#password_form_description').val(password_entry_description);
 		$('#password_form_account').val(password_entry_account);
@@ -181,7 +181,8 @@ function loadPasswordEdit(directory_id, password_id) {
 		});
 
 		var buttonSaveHtml = "<button id=\"password_from_button_save\" type=\"button\" class=\"btn btn-info\">";
-		buttonSaveHtml += "<i class=\"fa fa-floppy-o\"></i> Save</button>";
+		buttonSaveHtml += "<i class=\"fa fa-floppy-o\"></i> " + I18n.t('save_title') + "</button>";
+
 		$('#password_form_actions').html(buttonSaveHtml);
 		$('#password_from_button_save').click(function() {
 			checkAndSavePasswordForm(directory_id, password_id, apiPasswordEntryUpdate);
@@ -192,11 +193,10 @@ function loadPasswordEdit(directory_id, password_id) {
 
 function loadPasswordDelete(directory_id, password_id, password_label) {
 	var buttonDeleteHtml = "<button id=\"password_delete_button_delete\" type=\"button\" class=\"btn btn-danger\">";
-	buttonDeleteHtml += "<i class=\"fa fa-check\"></i> Yes</button>";
+	buttonDeleteHtml += "<i class=\"fa fa-check\"></i> " + I18n.t('yes_title') + "</button>";
+	var deleteTitleHtml = "<i class=\"fa fa-lock\"></i> " + I18n.t('directory_entries.modal_windows.password_form_delete_title') + ": " + password_label;
 
-	var deleteTitleHtml = "<i class=\"fa fa-lock\"></i> Delete password: " + password_label;
 	$('#password_delete_title').html(deleteTitleHtml);
-
 	$('#password_delete_actions').html(buttonDeleteHtml);
 	$('#password_delete_button_delete').click(function() {
 		apiPasswordEntryDelete(directory_id, password_id);
@@ -206,10 +206,10 @@ function loadPasswordDelete(directory_id, password_id, password_label) {
 
 function loadPasswordCopyTo(directory_id, password_entries) {
 	var buttonMoveToHtml = "<button id=\"password_copy_to_move_to_button\" type=\"button\" class=\"btn btn-danger\">";
-	buttonMoveToHtml += "<i class=\"fa fa-check\"></i> Yes</button>";
+	buttonMoveToHtml += "<i class=\"fa fa-check\"></i> " + I18n.t('yes_title') + "</button>";
 
 	$('#password_copy_to_move_to_alert_container').html("");
-	$('#password_copy_to_move_to_title').html("<i class=\"fa fa-files-o\"></i> Copy to");
+	$('#password_copy_to_move_to_title').html("<i class=\"fa fa-files-o\"></i> " + I18n.t('directory_entries.right_side.copy_to_label'));
 	$('#password_copy_to_move_to_actions').html(buttonMoveToHtml);
 
 	$.getJSON(Routes.api_v1_user_directories_path(), function(data) {
@@ -245,10 +245,10 @@ function loadPasswordCopyTo(directory_id, password_entries) {
 
 function loadPasswordMoveTo(directory_id, password_entries) {
 	var buttonMoveToHtml = "<button id=\"password_copy_to_move_to_button\" type=\"button\" class=\"btn btn-danger\">";
-	buttonMoveToHtml += "<i class=\"fa fa-check\"></i> Yes</button>";
+	buttonMoveToHtml += "<i class=\"fa fa-check\"></i> " + I18n.t('yes_title') + "</button>";
 
 	$('#password_copy_to_move_to_alert_container').html("");
-	$('#password_copy_to_move_to_title').html("<i class=\"fa fa-share\"></i> Move to");
+	$('#password_copy_to_move_to_title').html("<i class=\"fa fa-share\"></i> " + I18n.t('directory_entries.right_side.move_to_label'));
 	$('#password_copy_to_move_to_actions').html(buttonMoveToHtml);
 
 	$.getJSON(Routes.api_v1_user_directories_path(), function(data) {
@@ -283,9 +283,9 @@ function loadPasswordMoveTo(directory_id, password_entries) {
 
 function loadPasswordDeleteAll(directory_id, password_entries) {
 	var buttonDeleteHtml = "<button id=\"password_delete_all_button_delete\" type=\"button\" class=\"btn btn-danger\">";
-	buttonDeleteHtml += "<i class=\"fa fa-check\"></i> Yes</button>";
+	buttonDeleteHtml += "<i class=\"fa fa-check\"></i> " + I18n.t('yes_title') + "</button>";
 
-	var deleteTitleHtml = "<i class=\"fa fa-lock\"></i>  Are you sure to delete these passwords?";
+	var deleteTitleHtml = "<i class=\"fa fa-lock\"></i> " + I18n.t('directory_entries.modal_windows.password_form_delete_all_text');
 	$('#password_delete_all_title').html(deleteTitleHtml);
 	$('#password_delete_all_actions').html(buttonDeleteHtml);
 
@@ -324,7 +324,7 @@ function checkAndMoveOrCopyPasswordForm(directory_id, ids, api_callback) {
 				var label_item = labels[i];
 
 				if(!label_item['unique'])
-					password_copy_to_move_to_array[password_copy_to_move_to_array.length] = label_item['label'] + " - Sorry, that password label already exists!";
+					password_copy_to_move_to_array[password_copy_to_move_to_array.length] = label_item['label'] + " - " + I18n.t('directory_entries.modal_windows.password_form_label_exists');
 			}
 
 			if(!checkAndMoveOrCopyPasswordFormErrorMessage(password_copy_to_move_to_array)) {
@@ -347,7 +347,7 @@ function checkAndMoveOrCopyPasswordForm(directory_id, ids, api_callback) {
 				});
 			}
 		} else {
-			password_copy_to_move_to_array[password_copy_to_move_to_array.length] = "Api error!";
+			password_copy_to_move_to_array[password_copy_to_move_to_array.length] = I18n.t('directory_entries.forms_api_error');
 			checkAndMoveOrCopyPasswordFormErrorMessage(password_copy_to_move_to_array);
 		}
 	});
@@ -355,7 +355,7 @@ function checkAndMoveOrCopyPasswordForm(directory_id, ids, api_callback) {
 
 function checkAndMoveOrCopyPasswordFormErrorMessage(password_copy_to_move_to_array) {
 	if (password_copy_to_move_to_array.length > 0) {
-		var error_title = password_copy_to_move_to_array.length + " errors prohibited these passwords from being moved:";
+		var error_title = password_copy_to_move_to_array.length + " " + I18n.t('directory_entries.modal_windows.password_form_passwords_errors') + ":";
 		var error_content_html = "<div class=\"form-group\">";
 		error_content_html += "<div id=\"password_copy_to_move_to_alert_message\" class=\"alert alert-danger\">";
 		error_content_html += "<h2>" + error_title + "</h2>";
@@ -373,7 +373,7 @@ function checkAndMoveOrCopyPasswordFormErrorMessage(password_copy_to_move_to_arr
 
 function checkAndSavePasswordFormErrorMessage(password_form_array) {
 	if (password_form_array.length > 0) {
-		var error_title = password_form_array.length + " errors prohibited this password from being saved:";
+		var error_title = password_form_array.length + " " + I18n.t('directory_entries.modal_windows.password_form_password_errors') + ":";
 		var error_content_html = "<div class=\"form-group\">";
 		error_content_html += "<div id=\"password_form_alert_message\" class=\"alert alert-danger\">";
 		error_content_html += "<h2>" + error_title + "</h2>";
@@ -395,10 +395,10 @@ function checkAndSavePasswordForm(directory_id, password_id, api_callback) {
 	var password_form_password_value = $('#password_form_password').val();
 
 	if (objectIsEmpty(password_form_label_value))
-		password_form_array[password_form_array.length] = "Label can't be blank";
+		password_form_array[password_form_array.length] = I18n.t('directory_entries.modal_windows.password_form_label_cant_be_blank');
 
 	if (objectIsEmpty(password_form_password_value))
-		password_form_array[password_form_array.length] = "Password can't be blank";
+		password_form_array[password_form_array.length] = I18n.t('directory_entries.modal_windows.password_form_password_cant_be_blank');
 
 	if (!checkAndSavePasswordFormErrorMessage(password_form_array)) {
 		var json_url = Routes.check_password_label_api_v1_directory_entry_path(directory_id, { password_label: password_form_label_value });
@@ -410,11 +410,11 @@ function checkAndSavePasswordForm(directory_id, password_id, api_callback) {
 					$('#password_form_alert_container').html("");
 					api_callback(directory_id, password_id);
 				} else {
-					password_form_array[password_form_array.length] = "Sorry, that password label already exists!";
+					password_form_array[password_form_array.length] = I18n.t('directory_entries.modal_windows.password_form_label_exists');
 					checkAndSavePasswordFormErrorMessage(password_form_array);
 				}
 			} else {
-				password_form_array[password_form_array.length] = "Api error!";
+				password_form_array[password_form_array.length] = I18n.t('directory_entries.forms_api_error');
 				checkAndSavePasswordFormErrorMessage(password_form_array);
 			}
 		});

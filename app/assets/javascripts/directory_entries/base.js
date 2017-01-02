@@ -37,11 +37,11 @@ function loadFromUrlHash() {
 
 function loadingInfo(context) {
 	context.addClass('content_loading');
-	context.html('<i class="fa fa-refresh fa-spin"></i> Loading...');
+	context.html('<i class="fa fa-refresh fa-spin"></i> ' + I18n.t('directory_entries.loading_info'));
 }
 
 function emptyDirectoryInfo(context) {
-	context.html('<p class="text-center">The directory is empty.</p>');
+	context.html('<p class="text-center">' + I18n.t('directory_entries.right_side.password_list_is_empty') + '</p>');
 }
 
 function setCurrentUrlHashFromParams(params) {
@@ -136,7 +136,6 @@ $(document).ready(function() {
 
 		var list_unselected_items = list_keys.find('.item-key-checkbox.block-hidden');
 		var list_key_items = list_keys.find('.item-key-id');
-
 		var unselect_all = true;
 
 		if(list_unselected_items.size() == list_key_items.size())

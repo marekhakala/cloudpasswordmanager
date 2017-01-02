@@ -45,6 +45,7 @@ gem 'omniauth-google-oauth2', '>= 0.5.0'
 
 gem 'js-routes', '>= 1.3.3'
 gem 'zeroclipboard-rails', '>= 0.1.1'
+gem 'i18n-js', '>= 2.1.2'
 
 gem 'lato-rails', '>= 1.0.3'
 gem 'figaro', '>= 1.1.1'

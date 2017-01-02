@@ -2,7 +2,7 @@
   <div class="form-group text-left">
     <% if user_entry_object.errors.any? %>
       <div id="error_explanation" class="alert alert-danger">
-        <h2><%= pluralize(user_entry_object.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <h2><%= pluralize(user_entry_object.errors.count, "error") %> <%= t('portal_users.form_prohibited_this_user_from_being_saved') %>:</h2>
         <ul>
         <% user_entry_object.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -12,20 +12,20 @@
     <% end %>
   </div>
   <div class="form-group">
-    <label>Full name</label>
-    <%= f.text_field :fullname, class: 'form-control', placeholder: 'Full name', autofocus: true %>
+    <label><%= t('portal_users.form_full_name_label_and_title') %></label>
+    <%= f.text_field :fullname, class: 'form-control', placeholder: t('portal_users.form_full_name_label_and_title'), autofocus: true %>
   </div>
   <div class="form-group">
-    <label>E-mail</label>
-    <%= f.text_field :email, class: 'form-control', placeholder: 'E-mail' %>
+    <label><%= t('portal_users.form_email_label_and_title') %></label>
+    <%= f.text_field :email, class: 'form-control', placeholder: t('portal_users.form_email_label_and_title') %>
   </div>
   <div class="form-group">
-    <label>Address</label>
-    <%= f.text_field :address, class: 'form-control', placeholder: 'Address' %>
+    <label><%= t('portal_users.form_address_label_and_title') %></label>
+    <%= f.text_field :address, class: 'form-control', placeholder: t('portal_users.form_address_label_and_title') %>
   </div>
   <div class="form-group">
-    <label>Role</label>
-    <%= f.select :role_id, resolve_roles, { prompt: "-- Choose role --" }, class: 'form-control' %>
+    <label><%= t('portal_users.form_role_label_and_title') %></label>
+    <%= f.select :role_id, resolve_roles, { prompt: "-- #{t('portal_users.form_role_prompt_title')} --" }, class: 'form-control' %>
   </div>
   <% if not user_entry_action_edit.nil? and not user_entry_action_edit %>
     <div class="form-group">
@@ -41,15 +41,15 @@
             </div>
           </div>
           <div class="col-xs-7">
-            <span id="password_form_generate_password" class="btn btn-info"><i class="fa fa-cog"></i> Generate password</span>
+            <span id="password_form_generate_password" class="btn btn-info"><i class="fa fa-cog"></i> <%= t('portal_users.form_generate_password_button') %></span>
           </div>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label>Password</label>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <%= f.text_field :password, id: 'password_form_password', class: 'form-control', placeholder: 'Password', autocomplete: "off" %>
+      <label><%= t('portal_users.form_password_label_and_title') %></label>
+      <em>(<%= @minimum_password_length %> <%= t('minimum_password_characters') %>)</em>
+      <%= f.text_field :password, id: 'password_form_password', class: 'form-control', placeholder: t('portal_users.form_password_label_and_title'), autocomplete: "off" %>
     </div>
   <% end %>
   <div class="actions">

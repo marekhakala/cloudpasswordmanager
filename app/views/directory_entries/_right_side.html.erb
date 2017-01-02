@@ -4,17 +4,17 @@
       <div id="password_list_panel" class="block-hidden">
         <div class="panel panel-footer clearfix">
           <div class="pull-left section-list-panel-content">
-            <span id="password_list_selected_items">0</span> selected items from
+            <span id="password_list_selected_items">0</span> <%= t('directory_entries.right_side.selected_items_from_text') %>
           </div>
           <div class="pull-right">
             <button id="directory-list-modal-copy-to-button" class="btn btn-info btn-sm">
-              <i class="fa fa-copy"></i> Copy to
+              <i class="fa fa-copy"></i> <%= t('directory_entries.right_side.copy_to_label') %>
             </button>
             <button id="directory-list-modal-move-to-button" class="btn btn-info btn-sm">
-              <i class="fa fa-folder-open-o"></i> Move to
+              <i class="fa fa-folder-open-o"></i> <%= t('directory_entries.right_side.move_to_label') %>
             </button>
             <button id="directory-list-modal-delete-button" class="btn btn-info btn-sm">
-              <i class="fa fa-times"></i> Delete
+              <i class="fa fa-times"></i> <%= t('directory_entries.right_side.delete_label') %>
             </button>
           </div>
         </div>
@@ -32,12 +32,12 @@
           <thead>
             <tr>
               <th class="center">
-                <i id="checkbox_all" class="fa fa-check" title="Select or deselect all"></i>
+                <i id="checkbox_all" class="fa fa-check" title="<%= t('directory_entries.right_side.select_or_deselect_all_text') %>"></i>
               </th>
-              <th class="center">#</th>
-              <th class="center">Label</th>
-              <th class="center">Description</th>
-              <th class="center">Actions</th>
+              <th class="center"><%= t('directory_entries.right_side.passwords_list_column_title_id') %></th>
+              <th class="center"><%= t('directory_entries.right_side.passwords_list_column_title_label') %></th>
+              <th class="center"><%= t('directory_entries.right_side.passwords_list_column_title_description') %></th>
+              <th class="center"><%= t('directory_entries.right_side.passwords_list_column_title_actions') %></th>
             </tr>
           </thead>
           <tbody>
