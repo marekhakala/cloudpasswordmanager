@@ -40,6 +40,7 @@
                 <div class="panel-body">
                   User info<br />
                   <b>Return type:</b> <a href="#user_result_entity">UserResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -48,7 +49,11 @@
                 <div class="panel-heading"><span class="badge">PUT / PATCH</span> /api/v1/user/update</div>
                 <div class="panel-body">
                   User info update<br />
+                  <b>Request values:</b><br />
+                  <% user_info_update_json = "{\n\"user\": {\n \"fullname\": \"Demo Demo\",\n \"address\": \"Demo Ave 123456\"\n }\n}"; %>
+                  <%= show_code_json(user_info_update_json).html_safe %>
                   <b>Return type:</b> <a href="#user_result_entity">UserResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -58,6 +63,7 @@
                 <div class="panel-body">
                   The list of user directories<br />
                   <b>Return type:</b> <a href="#user_directories_entity">User directories Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -80,6 +86,7 @@
                 <div class="panel-body">
                   The list of directories<br />
                   <b>Return type:</b> <a href="#directory_result_entity">DirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -88,7 +95,11 @@
                 <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories</div>
                 <div class="panel-body">
                   Create a new directory<br />
+                  <b>Request values:</b><br />
+                  <% directories_json = "{\n\"directory_entry\": {\n \"label\": \"Demo\",\n \"description\": \"Demo directory\",\n \"directory_entry_id\": 1\n }\n}"; %>
+                  <%= show_code_json(directories_json).html_safe %>
                   <b>Return type:</b> <a href="#directory_result_entity">DirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -98,6 +109,7 @@
                 <div class="panel-body">
                   Directory info<br />
                   <b>Return type:</b> <a href="#directory_result_entity">DirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -106,7 +118,11 @@
                 <div class="panel-heading"><span class="badge">PATCH / PUT</span> /api/v1/directories/<i>:id</i></div>
                 <div class="panel-body">
                   Directory info update<br />
+                  <b>Request values:</b><br />
+                  <% directories_update_json = "{\n\"directory_entry\": {\n \"label\": \"Demo\",\n \"description\": \"Demo directory\",\n \"directory_entry_id\": 1\n }\n}"; %>
+                  <%= show_code_json(directories_update_json).html_safe %>
                   <b>Return type:</b> <a href="#directory_result_entity">DirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -116,6 +132,7 @@
                 <div class="panel-body">
                   Directory short info<br />
                   <b>Return type:</b> <a href="#info_directory_result_entity">InfoDirectoryResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -125,6 +142,7 @@
                 <div class="panel-body">
                   Check the directory label uniqueness<br />
                   <b>Return type:</b> <a href="#check_directory_label_result_entity">CheckDirectoryLabelResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -134,6 +152,7 @@
                 <div class="panel-body">
                   Check the password label uniqueness<br />
                   <b>Return type:</b> <a href="#check_password_label_result_entity">CheckPasswordLabelResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -143,6 +162,7 @@
                 <div class="panel-body">
                   Check that labels are unique<br />
                   <b>Return type:</b> <a href="#check_password_labels_result_entity">CheckPasswordLabelsResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -151,7 +171,11 @@
                 <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:id</i>/copy_to</div>
                 <div class="panel-body">
                   Copy passwords from a directory to another directory<br />
+                  <b>Request values:</b><br />
+                  <% directories_copy_to_json = "{\n\"copy_to_directory\": {\n \"ids\": [10, 20, 30],\n \"into\": 15\n }\n}"; %>
+                  <%= show_code_json(directories_copy_to_json).html_safe %>
                   <b>Return type:</b> <a href="#directory_multi_operations_results_entity">DirectoryMultiOperationsResults Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -160,7 +184,11 @@
                 <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:id</i>/move_to</div>
                 <div class="panel-body">
                   Move passwords from a directory to another directory<br />
+                  <b>Request values:</b><br />
+                  <% directories_move_to_json = "{\n\"move_to_directory\": {\n \"ids\": [10, 20, 30],\n \"into\": 15\n }\n}"; %>
+                  <%= show_code_json(directories_move_to_json).html_safe %>
                   <b>Return type:</b> <a href="#directory_multi_operations_results_entity">DirectoryMultiOperationsResults Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -169,7 +197,11 @@
                 <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:id</i>/delete_all</div>
                 <div class="panel-body">
                   Delete selected passwords<br />
+                  <b>Request values:</b><br />
+                  <% directories_delete_all_json = "{\n\"delete_all_directories\": {\n \"ids\": [10, 20, 30]\n }\n}"; %>
+                  <%= show_code_json(directories_delete_all_json).html_safe %>
                   <b>Return type:</b> <a href="#directory_multi_operations_results_entity">DirectoryMultiOperationsResults Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -179,6 +211,7 @@
                 <div class="panel-body">
                   Delete a directory<br />
                   <b>Return type:</b> <a href="#directory_delete_result_entity">DirectoryDeleteResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -202,6 +235,7 @@
                 <div class="panel-body">
                   Generate a random password<br />
                   <b>Return type:</b> <a href="#random_password_entity">RandomPassword Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -211,6 +245,7 @@
                 <div class="panel-body">
                   The list of passwords<br />
                   <b>Return type:</b> <a href="#password_result_entity">PasswordResult Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -219,7 +254,13 @@
                 <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords</div>
                 <div class="panel-body">
                   Create a password entry<br />
+                  <b>Request values:</b><br />
+                  <% directories_password_json = "{\n\"password_entry\": {\n \"label\": \"Demo\",\n \"description\": \"Demo directory\",\n" %>
+                  <% directories_password_json += " \"password\": \"123456\",\n \"account\": \"demoaccount\",\n" %>
+                  <% directories_password_json += " \"email\": \"demo@demo.com\",\n \"url\": \"http:\/\/demo.com\",\n }\n}" %>
+                  <%= show_code_json(directories_password_json).html_safe %>
                   <b>Return type:</b> <a href="#password_result_entity">PasswordResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -229,6 +270,7 @@
                 <div class="panel-body">
                   Password entry info<br />
                   <b>Return type:</b> <a href="#password_item_result_entity">PasswordItemResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -237,7 +279,13 @@
                 <div class="panel-heading"><span class="badge">PATCH / PUT</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords/<i>:id</i></div>
                 <div class="panel-body">
                   Password entry update<br />
+                  <b>Request values:</b><br />
+                  <% directories_password_update_json = "{\n\"password_entry\": {\n \"label\": \"Demo\",\n \"description\": \"Demo directory\",\n" %>
+                  <% directories_password_update_json += " \"password\": \"123456\",\n \"account\": \"demoaccount\",\n" %>
+                  <% directories_password_update_json += " \"email\": \"demo@demo.com\",\n \"url\": \"http:\/\/demo.com\",\n }\n}" %>
+                  <%= show_code_json(directories_password_update_json).html_safe %>
                   <b>Return type:</b> <a href="#password_item_result_entity">PasswordItemResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -247,6 +295,7 @@
                 <div class="panel-body">
                   Delete a password entry<br />
                   <b>Return type:</b> <a href="#password_item_result_entity">PasswordItemResult Entity</a> or <a href="#error_entity">Error Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -255,7 +304,11 @@
                 <div class="panel-heading"><span class="badge">POST</span> /api/v1/directories/<i>:directory_entry_id</i>/passwords/infos</div>
                 <div class="panel-body">
                   Password entry info<br />
+                  <b>Request values:</b><br />
+                  <% directories_password_infos_json = "{\n\"password_entries_infos\": {\n \"ids\": \"\[10, 20, 30\]\"\n }\n}" %>
+                  <%= show_code_json(directories_password_infos_json).html_safe %>
                   <b>Return type:</b> <a href="#password_entries_infos_result_entity">PasswordEntriesInfosResult Entity</a>
+                  <br /><br /><span><a href="#authorization_header_value" class="btn btn-default btn-sm"><i class="fa fa-lock"></i> Auth required</a></span><br />
                 </div>
               </div>
             </li>
@@ -669,6 +722,33 @@
                     <li><b>scope</b> (string)</li>
                     <li><b>created_at</b> (long)</li>
                   </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <h3 class="text-center"><i class="fa fa-sitemap"></i> <i>Headers</i></h3>
+  </div>
+
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-info">
+        <div class="box-header">
+          <b><i class="fa fa-server"></i> OAuth headers</b>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li class="list-unstyled">
+              <div id="authorization_header_value" class="panel panel-default">
+                <div class="panel-heading"><b>Authorization</b> header value</div>
+                <div class="panel-body">
+                  <% directories_move_to_json = "{\n\"Authorization\": \"bearer \[token\]\"\n}"; %>
+                  <%= show_code_json(directories_move_to_json).html_safe %>
                 </div>
               </div>
             </li>

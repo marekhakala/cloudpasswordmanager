@@ -35,6 +35,7 @@ gem 'bcrypt', '~> 3.1.11'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'font-awesome-rails', '~> 4.7.0.2'
 gem 'font-ionicons-rails', '~> 2.0.1.5'
+gem 'coderay', '>= 1.1.1'
 
 # Use Devise auth
 gem 'devise', '~> 4.3.0'
