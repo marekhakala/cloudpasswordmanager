@@ -53,11 +53,12 @@ gem 'figaro', '>= 1.1.1'
 gem 'doorkeeper', '>= 4.2.6'
 gem 'active_model_serializers', '0.10.6'
 gem 'stroke-seven-rails', '1.2.3'
-
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
+  gem 'rspec', '>= 3.5.0'
+  gem 'rspec-rails', '>= 3.5.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
@@ -69,6 +70,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'factory_girl_rails', '>= 4.6.0'
+  gem 'shoulda-matchers', '>= 3.1.1'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

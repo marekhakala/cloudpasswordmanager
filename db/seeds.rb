@@ -31,7 +31,7 @@ oauthApplicationAndroid.redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
 oauthApplicationAndroid.save!
 
 # Users demo data for development
-if Rails.env.development?
+if Rails.env.development? or Rails.env.test?
   # Normal demo account
   user = User.create_base_user({ fullname: 'Demo Demo', email: 'demo@demo.com', role: normalRole, password: 'demodemo' })
   # Administrator account
@@ -58,6 +58,7 @@ if Rails.env.development?
   passwordEntryRootGeneralEmail.description = 'My e-mail password'
   passwordEntryRootGeneralEmail.url = 'https://myemailbox.com'
   passwordEntryRootGeneralEmail.account = 'username@myemailbox.com'
+  passwordEntryRootGeneralEmail.email = 'username@myemailbox.com'
   passwordEntryRootGeneralEmail.password = '12345678'
   passwordEntryRootGeneralEmail.directory_entry = directoryEntryRootGeneral
   passwordEntryRootGeneralEmail.save!
@@ -68,6 +69,7 @@ if Rails.env.development?
   passwordEntryRootGeneralPrivateWebsite.description = 'My website password'
   passwordEntryRootGeneralPrivateWebsite.url = 'https://mypersonalwebsite.com'
   passwordEntryRootGeneralPrivateWebsite.account = 'username'
+  passwordEntryRootGeneralPrivateWebsite.email = 'username@email.com'
   passwordEntryRootGeneralPrivateWebsite.password = 'abcdefghtij'
   passwordEntryRootGeneralPrivateWebsite.directory_entry = directoryEntryRootGeneral
   passwordEntryRootGeneralPrivateWebsite.save!
@@ -86,6 +88,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralOneEmail.description = 'My e-mail password'
   passwordEntryRootGeneralGeneralOneEmail.url = 'https://myemailbox.com'
   passwordEntryRootGeneralGeneralOneEmail.account = 'username@myemailbox.com'
+  passwordEntryRootGeneralGeneralOneEmail.email = 'username@myemailbox.com'
   passwordEntryRootGeneralGeneralOneEmail.password = '12345678'
   passwordEntryRootGeneralGeneralOneEmail.directory_entry = directoryEntryRootGeneralGeneralOne
   passwordEntryRootGeneralGeneralOneEmail.save!
@@ -96,6 +99,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralOnePrivateWebsite.description = 'My website password'
   passwordEntryRootGeneralGeneralOnePrivateWebsite.url = 'https://mypersonalwebsite.com'
   passwordEntryRootGeneralGeneralOnePrivateWebsite.account = 'username'
+  passwordEntryRootGeneralGeneralOnePrivateWebsite.email = 'username@email.com'
   passwordEntryRootGeneralGeneralOnePrivateWebsite.password = 'abcdefghtij'
   passwordEntryRootGeneralGeneralOnePrivateWebsite.directory_entry = directoryEntryRootGeneralGeneralOne
   passwordEntryRootGeneralGeneralOnePrivateWebsite.save!
@@ -114,6 +118,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralOneEmail.description = 'My e-mail password'
   passwordEntryRootGeneralGeneralOneEmail.url = 'https://myemailbox.com'
   passwordEntryRootGeneralGeneralOneEmail.account = 'username@myemailbox.com'
+  passwordEntryRootGeneralGeneralOneEmail.email = 'username@myemailbox.com'
   passwordEntryRootGeneralGeneralOneEmail.password = '12345678'
   passwordEntryRootGeneralGeneralOneEmail.directory_entry = directoryEntryRootGeneralGeneralTwo
   passwordEntryRootGeneralGeneralOneEmail.save!
@@ -124,6 +129,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralOnePrivateWebsite.description = 'My website password'
   passwordEntryRootGeneralGeneralOnePrivateWebsite.url = 'https://mypersonalwebsite.com'
   passwordEntryRootGeneralGeneralOnePrivateWebsite.account = 'username'
+  passwordEntryRootGeneralGeneralOnePrivateWebsite.email = 'username@email.com'
   passwordEntryRootGeneralGeneralOnePrivateWebsite.password = 'abcdefghtij'
   passwordEntryRootGeneralGeneralOnePrivateWebsite.directory_entry = directoryEntryRootGeneralGeneralTwo
   passwordEntryRootGeneralGeneralOnePrivateWebsite.save!
@@ -142,6 +148,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralTwoGeneralTwoOneEmail.description = 'My e-mail password'
   passwordEntryRootGeneralGeneralTwoGeneralTwoOneEmail.url = 'https://myemailbox.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoOneEmail.account = 'username@myemailbox.com'
+  passwordEntryRootGeneralGeneralTwoGeneralTwoOneEmail.email = 'username@myemailbox.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoOneEmail.password = '12345678'
   passwordEntryRootGeneralGeneralTwoGeneralTwoOneEmail.directory_entry = directoryEntryRootGeneralGeneralTwoGeneralTwoOne
   passwordEntryRootGeneralGeneralTwoGeneralTwoOneEmail.save!
@@ -152,6 +159,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralTwoGeneralTwoOnePrivateWebsite.description = 'My website password'
   passwordEntryRootGeneralGeneralTwoGeneralTwoOnePrivateWebsite.url = 'https://mypersonalwebsite.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoOnePrivateWebsite.account = 'username'
+  passwordEntryRootGeneralGeneralTwoGeneralTwoOnePrivateWebsite.email = 'username@email.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoOnePrivateWebsite.password = 'abcdefghtij'
   passwordEntryRootGeneralGeneralTwoGeneralTwoOnePrivateWebsite.directory_entry = directoryEntryRootGeneralGeneralTwoGeneralTwoOne
   passwordEntryRootGeneralGeneralTwoGeneralTwoOnePrivateWebsite.save!
@@ -170,6 +178,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoEmail.description = 'My e-mail password'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoEmail.url = 'https://myemailbox.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoEmail.account = 'username@myemailbox.com'
+  passwordEntryRootGeneralGeneralTwoGeneralTwoTwoEmail.email = 'username@myemailbox.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoEmail.password = '12345678'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoEmail.directory_entry = directoryEntryRootGeneralGeneralTwoGeneralTwoTwo
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoEmail.save!
@@ -180,6 +189,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoPrivateWebsite.description = 'My website password'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoPrivateWebsite.url = 'https://mypersonalwebsite.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoPrivateWebsite.account = 'username'
+  passwordEntryRootGeneralGeneralTwoGeneralTwoTwoPrivateWebsite.email = 'username@email.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoPrivateWebsite.password = 'abcdefghtij'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoPrivateWebsite.directory_entry = directoryEntryRootGeneralGeneralTwoGeneralTwoTwo
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoPrivateWebsite.save!
@@ -198,6 +208,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOneEmail.description = 'My e-mail password'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOneEmail.url = 'https://myemailbox.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOneEmail.account = 'username@myemailbox.com'
+  passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOneEmail.email = 'username@myemailbox.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOneEmail.password = '12345678'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOneEmail.directory_entry = directoryEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOne
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOneEmail.save!
@@ -208,6 +219,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOnePrivateWebsite.description = 'My website password'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOnePrivateWebsite.url = 'https://mypersonalwebsite.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOnePrivateWebsite.account = 'username'
+  passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOnePrivateWebsite.email = 'username@email.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOnePrivateWebsite.password = 'abcdefghtij'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOnePrivateWebsite.directory_entry = directoryEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOne
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoOnePrivateWebsite.save!
@@ -226,6 +238,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoEmail.description = 'My e-mail password'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoEmail.url = 'https://myemailbox.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoEmail.account = 'username@myemailbox.com'
+  passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoEmail.email = 'username@myemailbox.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoEmail.password = '12345678'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoEmail.directory_entry = directoryEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwo
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoEmail.save!
@@ -236,6 +249,7 @@ if Rails.env.development?
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoPrivateWebsite.description = 'My website password'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoPrivateWebsite.url = 'https://mypersonalwebsite.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoPrivateWebsite.account = 'username'
+  passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoPrivateWebsite.email = 'username@email.com'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoPrivateWebsite.password = 'abcdefghtij'
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoPrivateWebsite.directory_entry = directoryEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwo
   passwordEntryRootGeneralGeneralTwoGeneralTwoTwoGeneralTwoTwoTwoPrivateWebsite.save!
@@ -254,6 +268,7 @@ if Rails.env.development?
   passwordEntryWebHosting.description = 'My web hosting password'
   passwordEntryWebHosting.url = 'https://mywebhosting.com'
   passwordEntryWebHosting.account = 'user@domain.com'
+  passwordEntryWebHosting.email = 'user@domain.com'
   passwordEntryWebHosting.password = 'tvuiwqdojao'
   passwordEntryWebHosting.directory_entry = directoryEntryOthers
   passwordEntryWebHosting.save!
@@ -264,6 +279,7 @@ if Rails.env.development?
   passwordEntryVirtualPrivateServer.description = 'My VPS SSH password'
   passwordEntryVirtualPrivateServer.url = 'https://myvps.ltd'
   passwordEntryVirtualPrivateServer.account = 'user'
+  passwordEntryVirtualPrivateServer.email = 'user@email.com'
   passwordEntryVirtualPrivateServer.password = 'somethinggreat'
   passwordEntryVirtualPrivateServer.directory_entry = directoryEntryOthers
   passwordEntryVirtualPrivateServer.save!
