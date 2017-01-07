@@ -56,15 +56,15 @@ module Api::V1
       check_password_labels_infos = Array.new
       @password_entries = @user.directory_entries.find_by!(id: c_params[:id]).password_entries
 
-      c_params[:ids].each do |idValue|
+      c_params[:labels].each do |labelValue|
         password_entry_info_output = Hash.new
-        password_entry_info_output["id"] = idValue
+        password_entry_info_output["label"] = labelValue
 
-        password_entry_info = @password_entries.find_by(id: idValue)
+        password_entry_info = @password_entries.find_by(label: labelValue)
         password_entry_info_output["unique"] = password_entry_info.nil? ? true : false
 
         unless password_entry_info.nil?
-          password_entry_info_output["label"] = password_entry_info.label
+          password_entry_info_output["id"] = password_entry_info.id
           password_entry_info_output["description"] = password_entry_info.description
         end
 
@@ -239,8 +239,8 @@ module Api::V1
       end
 
       def check_password_labels_params
-        params.require(:ids)
-        params.permit(:id, :ids => [])
+        params.require(:labels)
+        params.permit(:id, :labels => [])
       end
 
       def directory_entry_params

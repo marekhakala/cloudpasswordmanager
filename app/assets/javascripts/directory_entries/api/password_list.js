@@ -84,7 +84,7 @@ function apiPasswordEntryDelete(directory_id, password_id) {
 	});
 }
 
-function apiPasswordSelectedLabels(directory_id, ids, api_callback) {
+function apiPasswordSelectedLabels(directory_id, items, api_callback) {
 	var json_url = Routes.check_password_labels_api_v1_directory_entry_path(directory_id);
 
 	$.ajax({
@@ -92,7 +92,7 @@ function apiPasswordSelectedLabels(directory_id, ids, api_callback) {
 		dataType: "json",
 		url: json_url,
 		contentType: "application/json",
-		data: JSON.stringify({ "ids": ids }),
+		data: JSON.stringify({ "labels": items['labels'] }),
 		success: function(data) {
 			api_callback(data);
 		},
@@ -102,7 +102,7 @@ function apiPasswordSelectedLabels(directory_id, ids, api_callback) {
 	});
 }
 
-function apiPasswordDeleteAllNames(directory_id, ids, api_callback) {
+function apiPasswordDeleteAllNames(directory_id, items, api_callback) {
 	var json_url = Routes.infos_api_v1_directory_entry_password_entries_path(directory_id);
 
 	$.ajax({
@@ -110,7 +110,7 @@ function apiPasswordDeleteAllNames(directory_id, ids, api_callback) {
 		dataType: "json",
 		url: json_url,
 		contentType: "application/json",
-		data: JSON.stringify({ "password_entries_infos": { "ids": ids }}),
+		data: JSON.stringify({ "password_entries_infos": { "ids": items['ids'] }}),
 		success: function(data) {
 			api_callback(data);
 		},
@@ -120,7 +120,7 @@ function apiPasswordDeleteAllNames(directory_id, ids, api_callback) {
 	});
 }
 
-function apiPasswordCopyTo(orig_directory_id, directory_id, ids, api_callback) {
+function apiPasswordCopyTo(orig_directory_id, directory_id, items, api_callback) {
 	var json_url = Routes.copy_to_api_v1_directory_entry_path(orig_directory_id);
 
 	$.ajax({
@@ -128,7 +128,7 @@ function apiPasswordCopyTo(orig_directory_id, directory_id, ids, api_callback) {
 		dataType: "json",
 		url: json_url,
 		contentType: "application/json",
-		data: JSON.stringify({ "copy_to_directory": { "into": directory_id, "ids": ids }}),
+		data: JSON.stringify({ "copy_to_directory": { "into": directory_id, "ids": items['ids'] }}),
 		success: function(data) {
 			api_callback(data);
 		},
@@ -138,7 +138,7 @@ function apiPasswordCopyTo(orig_directory_id, directory_id, ids, api_callback) {
 	});
 }
 
-function apiPasswordMoveTo(orig_directory_id, directory_id, ids, api_callback) {
+function apiPasswordMoveTo(orig_directory_id, directory_id, items, api_callback) {
 	var json_url = Routes.move_to_api_v1_directory_entry_path(orig_directory_id);
 
 	$.ajax({
@@ -146,7 +146,7 @@ function apiPasswordMoveTo(orig_directory_id, directory_id, ids, api_callback) {
 		dataType: "json",
 		url: json_url,
 		contentType: "application/json",
-		data: JSON.stringify({ "move_to_directory": { "into": directory_id, "ids": ids }}),
+		data: JSON.stringify({ "move_to_directory": { "into": directory_id, "ids": items['ids'] }}),
 		success: function(data) {
 			api_callback(data);
 		},

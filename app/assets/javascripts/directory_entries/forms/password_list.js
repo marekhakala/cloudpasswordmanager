@@ -224,16 +224,20 @@ function loadPasswordCopyTo(directory_id, password_entries) {
 			 }
 
 			 $('#password_copy_to_move_to_directory').html(htmlOutput);
-
-			 var items = [];
+			 var items = {};
+			 var idItems = [];
+			 var labelItems = [];
 			 var liItemHtml = "";
 
 			 for(var i = 0; i < password_entries.length; i++) {
-			 	var item = password_entries[i];
-				items[items.length] = item['id'];
-				liItemHtml += "<li>" + item['label'] + "</li>";
+				 var item = password_entries[i];
+				 idItems[idItems.length] = item['id'];
+				 labelItems[labelItems.length] = item['label'];
+				 liItemHtml += "<li>" + item['label'] + "</li>";
 			 }
 
+			 items['ids'] = idItems;
+			 items['labels'] = labelItems;
 			 $('#password_copy_to_move_to_passwords_list').html(liItemHtml);
 			 $('#password_copy_to_move_to_button').click(function() {
 				 checkAndMoveOrCopyPasswordForm(directory_id, items, apiPasswordCopyTo);
@@ -262,16 +266,20 @@ function loadPasswordMoveTo(directory_id, password_entries) {
 				 htmlOutput += dataItem['directory_path'] + "</option>";
 			 }
 			 $('#password_copy_to_move_to_directory').html(htmlOutput);
-
-			 var items = [];
+			 var items = {};
+			 var idItems = [];
+			 var labelItems = [];
 			 var liItemHtml = "";
 
 			 for(var i = 0; i < password_entries.length; i++) {
-				 var item = password_entries[i];
-				 items[items.length] = item['id'];
-				 liItemHtml += "<li>" + item['label'] + "</li>";
+			 	var item = password_entries[i];
+			 	idItems[idItems.length] = item['id'];
+			 	labelItems[labelItems.length] = item['label'];
+			 	liItemHtml += "<li>" + item['label'] + "</li>";
 			 }
 
+			 items['ids'] = idItems;
+			 items['labels'] = labelItems;
 			 $('#password_copy_to_move_to_passwords_list').html(liItemHtml);
 			 $('#password_copy_to_move_to_button').click(function() {
 				 checkAndMoveOrCopyPasswordForm(directory_id, items, apiPasswordMoveTo);
@@ -312,11 +320,11 @@ function loadPasswordDeleteAll(directory_id, password_entries) {
 	$('#password_delete_all_modal').modal();
 }
 
-function checkAndMoveOrCopyPasswordForm(directory_id, ids, api_callback) {
+function checkAndMoveOrCopyPasswordForm(directory_id, items, api_callback) {
 	var password_copy_to_move_to_array = [];
 	var password_copy_to_move_to_directory_value = $('#password_copy_to_move_to_directory').val();
 
-	apiPasswordSelectedLabels(password_copy_to_move_to_directory_value, ids, function(data) {
+	apiPasswordSelectedLabels(password_copy_to_move_to_directory_value, items, function(data) {
 		if(elementHasProperty('status', data) && data['status'] !== "failed" && data['check_password_labels'] != null) {
 			var labels = data['check_password_labels'];
 
@@ -329,7 +337,7 @@ function checkAndMoveOrCopyPasswordForm(directory_id, ids, api_callback) {
 
 			if(!checkAndMoveOrCopyPasswordFormErrorMessage(password_copy_to_move_to_array)) {
 				$('#password_copy_to_move_to_alert_container').html("");
-				api_callback(directory_id, password_copy_to_move_to_directory_value, ids, function(data) {
+				api_callback(directory_id, password_copy_to_move_to_directory_value, items, function(data) {
 					if(elementHasProperty('status', data) && data['status'] !== "failed") {
 						$('#password_copy_to_move_to_modal').modal('toggle');
 						refreshUi();

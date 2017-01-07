@@ -90,13 +90,21 @@ function updateControlPanel() {
 }
 
 function getListSelectedItems() {
-	var list_of_selected_items = [];
+	var list_of_selected_items = {};
+	var list_of_selected_id_items = [];
+	var list_of_selected_label_items = [];
 	var list = $('.item-key-checkbox').not('.block-hidden');
 
 	for (i = 0; i < list.length; i++) {
-		var value = $(list[i]).children('.item-key-id')[0];
-		list_of_selected_items.push($(value).html());
+		var valueId = $(list[i]).children('.item-key-id')[0];
+		var valueLabel = $(list[i]).children('.item-key-label')[0];
+
+		list_of_selected_id_items.push($(valueId).html());
+		list_of_selected_label_items.push($(valueLabel).html());
 	}
+
+	list_of_selected_items["ids"] = list_of_selected_id_items;
+	list_of_selected_items["labels"] = list_of_selected_label_items;
 	return list_of_selected_items;
 }
 
@@ -169,9 +177,9 @@ $(document).ready(function() {
 	// Directory list - Table - Copy to
 	$('#directory-list-modal-copy-to-button').click(function() {
 		var directory_id = $('#directory_list_path').attr('data-current-directory-id');
-		var ids = getListSelectedItems();
+		var items = getListSelectedItems();
 
-		apiPasswordSelectedLabels(directory_id, ids, function(data) {
+		apiPasswordSelectedLabels(directory_id, items, function(data) {
 			loadPasswordCopyTo(directory_id, data['check_password_labels']);
 		});
 	});
@@ -179,9 +187,9 @@ $(document).ready(function() {
 	// Directory list - Table - Move to
 	$('#directory-list-modal-move-to-button').click(function() {
 		var directory_id = $('#directory_list_path').attr('data-current-directory-id');
-		var ids = getListSelectedItems();
+		var items = getListSelectedItems();
 
-		apiPasswordSelectedLabels(directory_id, ids, function(data) {
+		apiPasswordSelectedLabels(directory_id, items, function(data) {
 			loadPasswordMoveTo(directory_id, data['check_password_labels']);
 		});
 	});
@@ -189,9 +197,9 @@ $(document).ready(function() {
 	// Directory list - Table - Delete all
 	$('#directory-list-modal-delete-button').click(function() {
 		var directory_id = $('#directory_list_path').attr('data-current-directory-id');
-		var ids = getListSelectedItems();
+		var items = getListSelectedItems();
 
-		apiPasswordDeleteAllNames(directory_id, ids, function(data) {
+		apiPasswordDeleteAllNames(directory_id, items, function(data) {
 			loadPasswordDeleteAll(directory_id, data['password_entries_infos']);
 		});
 	});

@@ -9,6 +9,7 @@ function fillPasswordRow(data, index) {
 	html += "<td class=\"item-key-checkbox-td center\">";
 	html += "<span class=\"item-key-checkbox block-hidden\">";
 	html += "<span class=\"item-key-id block-hidden\">" + data['id'] + "</span>";
+	html += "<span class=\"item-key-label block-hidden\">" + data['label'] + "</span>";
 	html += "<i class=\"fa fa-check\" title=\"Selected\"></i>";
 	html += "</span>";
 	html += "</td>";
