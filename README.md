@@ -3,7 +3,7 @@
 
 ![CloudPasswordManager logo](Screenshots/cloudpasswordmanager_logo.png)
 
-The CloudPasswordManager is a rich web application that provides you password manager. The application was created in Ruby on Rails and UI part is written in Javascript.
+The CloudPasswordManager is a rich web application that provides you password manager. The application created in Ruby on Rails and UI part is written in Javascript.
 
 [Screenshots](Screenshots/)
 
