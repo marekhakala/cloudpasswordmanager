@@ -1,9 +1,9 @@
 
-# CloudPasswordManager 1.0.0
+# Cloud Password Manager v1.0.0
 
-![CloudPasswordManager logo](Screenshots/cloudpasswordmanager_logo.png)
+![CloudPasswordManager logo](Screenshots/cloudpasswordmanager.png)
 
-The CloudPasswordManager is a rich web application that provides you password manager. The application created in Ruby on Rails and UI part is written in Javascript.
+Built an application that provides you a web based password manager.
 
 [Screenshots](Screenshots/)
 
